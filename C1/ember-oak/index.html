@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ember & Oak Coffee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --espresso:#2B1B14;
+    --cream:#EFE7D6;
+    --ochre:#C08A28;
+    --pine:#3A4B3C;
+    --paper:#FBF8F1;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--espresso);
+    font-family:'Work Sans',sans-serif;
+    line-height:1.6;
+  }
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;line-height:1.1;}
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  header{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:28px 24px;max-width:1080px;margin:0 auto;
+  }
+  .mark{font-family:'Fraunces',serif;font-weight:700;font-size:1.3rem;letter-spacing:0.01em;}
+  nav a{margin-left:28px;text-decoration:none;font-size:0.95rem;}
+
+  .hero{
+    background:var(--espresso);color:var(--paper);
+    padding:90px 24px 100px;
+  }
+  .hero-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1.3fr 1fr;gap:56px;align-items:end;}
+  .hero h1{font-size:clamp(2.6rem,5vw,4.2rem);max-width:11ch;}
+  .hero p{margin-top:22px;max-width:38ch;font-size:1.08rem;color:#D8CDBA;}
+  .hero-side{border-left:1px solid #55453a;padding-left:36px;}
+  .hero-side p{color:#D8CDBA;font-size:0.98rem;max-width:30ch;}
+  .hero-side .addr{margin-top:18px;color:var(--ochre);font-weight:500;}
+  .btn{
+    display:inline-block;margin-top:32px;background:var(--ochre);color:var(--espresso);
+    padding:13px 26px;text-decoration:none;font-weight:500;border-radius:2px;
+  }
+
+  section{padding:80px 24px;}
+  .story{max-width:640px;margin:0 auto;text-align:left;}
+  .story h2{font-size:2rem;margin-bottom:20px;}
+  .story p{font-size:1.05rem;color:#4a3a30;}
+  .story p+p{margin-top:16px;}
+
+  .menu{background:var(--espresso);color:var(--paper);}
+  .menu-inner{max-width:760px;margin:0 auto;}
+  .menu h2{color:var(--paper);font-size:2rem;margin-bottom:8px;}
+  .menu .sub{color:#B9AC98;margin-bottom:40px;font-size:0.98rem;}
+  .menu-group{margin-bottom:36px;}
+  .menu-group h3{font-size:1.05rem;color:var(--ochre);font-weight:600;margin-bottom:14px;letter-spacing:0.02em;}
+  .item{
+    display:flex;justify-content:space-between;align-items:baseline;
+    padding:12px 0;border-bottom:1px solid #4a3a30;gap:20px;
+  }
+  .item:last-child{border-bottom:none;}
+  .item-name{font-size:1.02rem;}
+  .item-desc{color:#B9AC98;font-size:0.88rem;margin-top:3px;}
+  .item-price{color:var(--ochre);font-weight:500;white-space:nowrap;}
+
+  .visit{background:var(--pine);color:var(--paper);}
+  .visit-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;}
+  .visit h2{color:var(--paper);font-size:1.9rem;margin-bottom:18px;}
+  .hours-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #4d5c4e;font-size:0.98rem;}
+  .hours-row:last-child{border-bottom:none;}
+  .visit-note p{color:#CBD4CB;font-size:1rem;margin-bottom:14px;}
+  .visit-note .addr{font-family:'Fraunces',serif;font-size:1.15rem;margin-bottom:18px;}
+
+  footer{padding:32px 24px;text-align:center;color:#8a7a6a;font-size:0.85rem;}
+
+  @media (max-width:760px){
+    .hero-inner{grid-template-columns:1fr;gap:36px;}
+    .hero-side{border-left:none;padding-left:0;border-top:1px solid #55453a;padding-top:24px;}
+    .visit-inner{grid-template-columns:1fr;}
+    nav a{margin-left:16px;font-size:0.88rem;}
+  }
+
+  @media (prefers-reduced-motion: no-preference){
+    .btn{transition:background 0.15s ease;}
+    .btn:hover{background:#d69b3a;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="mark">Ember &amp; Oak</div>
+  <nav>
+    <a href="#story">Story</a>
+    <a href="#menu">Menu</a>
+    <a href="#visit">Visit</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <h1>Coffee, roasted three blocks from where you're drinking it.</h1>
+      <p>A small-batch roastery and café on the corner of 4th and Elm. We roast twice a week, pull every shot to order, and know most of our regulars by name.</p>
+      <a href="#menu" class="btn">See the menu</a>
+    </div>
+    <div class="hero-side">
+      <p>Open daily from early to mid-afternoon. Free pour-over cupping every Saturday morning.</p>
+      <div class="addr">412 Elm Street, open 6:30am</div>
+    </div>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <h2>Why we roast in-house</h2>
+  <p>Most cafés buy their beans from somewhere else, sitting in a warehouse for weeks before they reach a cup. We wanted something more direct — a roaster in the back, a bar up front, and about twelve feet between the two.</p>
+  <p>We buy in small lots from growers we've met, roast in batches under ten kilos, and rest each roast before it goes on bar. If a bag isn't right, we don't sell it. That's the whole philosophy.</p>
+</section>
+
+<section class="menu" id="menu">
+  <div class="menu-inner">
+    <h2>On the bar</h2>
+    <div class="sub">Espresso pulled on a Slayer, milk steamed to order, filter brewed by the cup.</div>
+
+    <div class="menu-group">
+      <h3>Espresso</h3>
+      <div class="item">
+        <div><div class="item-name">Espresso</div><div class="item-desc">Single or double</div></div>
+        <div class="item-price">$3.50</div>
+      </div>
+      <div class="item">
+        <div><div class="item-name">Cortado</div><div class="item-desc">Equal parts espresso and steamed milk</div></div>
+        <div class="item-price">$4.50</div>
+      </div>
+      <div class="item">
+        <div><div class="item-name">Oat Milk Latte</div><div class="item-desc">Double shot, house-made oat milk</div></div>
+        <div class="item-price">$5.25</div>
+      </div>
+    </div>
+
+    <div class="menu-group">
+      <h3>Filter</h3>
+      <div class="item">
+        <div><div class="item-name">Pour-Over</div><div class="item-desc">Rotating single origin, ask what's fresh</div></div>
+        <div class="item-price">$5.00</div>
+      </div>
+      <div class="item">
+        <div><div class="item-name">Batch Brew</div><div class="item-desc">Our house blend, brewed hourly</div></div>
+        <div class="item-price">$3.25</div>
+      </div>
+    </div>
+
+    <div class="menu-group">
+      <h3>From the case</h3>
+      <div class="item">
+        <div><div class="item-name">Brown Butter Croissant</div><div class="item-desc">Baked each morning next door</div></div>
+        <div class="item-price">$4.00</div>
+      </div>
+      <div class="item">
+        <div><div class="item-name">Olive Oil Loaf Cake</div><div class="item-desc">Rosemary and sea salt</div></div>
+        <div class="item-price">$4.75</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="visit-inner">
+    <div>
+      <h2>Hours</h2>
+      <div class="hours-row"><span>Monday – Friday</span><span>6:30am – 3:00pm</span></div>
+      <div class="hours-row"><span>Saturday</span><span>7:00am – 3:00pm</span></div>
+      <div class="hours-row"><span>Sunday</span><span>7:00am – 1:00pm</span></div>
+    </div>
+    <div class="visit-note">
+      <div class="addr">412 Elm Street</div>
+      <p>Street parking after 9am. Two steps up at the entrance — a ramp is around the side by the roastery door.</p>
+      <p>For orders of six drinks or more, call ahead and we'll have it ready: (555) 014-2290.</p>
+    </div>
+  </div>
+</section>
+
+<footer>Ember &amp; Oak Coffee — 412 Elm Street</footer>
+
+</body>
+</html>
